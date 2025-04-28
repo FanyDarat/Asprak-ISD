@@ -1,26 +1,31 @@
 public class Main {
     public static void main(String[] args) {
-        AdjacencyMatrix graphMatrix = new AdjacencyMatrix(5);
-        AdjacencyList graphList = new AdjacencyList(6);
 
-        graphMatrix.addEdge(0, 1);
-        graphMatrix.addEdge(1, 2);
-        graphMatrix.addEdge(2, 3);
-        graphMatrix.addEdge(3, 1);
-        graphMatrix.addEdge(3, 2);
-        graphMatrix.addEdge(3, 4);
-        graphMatrix.addEdge(4, 0);
+//        AdjacencyMatrix graphMatrix = new AdjacencyMatrix(8);
+        AdjacencyList graph = new AdjacencyList(8);
 
-        graphList.addEdge(1, 2);
-        graphList.addEdge(2, 3);
-        graphList.addEdge(3, 4);
-        graphList.addEdge(4, 2);
-        graphList.addEdge(4, 3);
-        graphList.addEdge(4, 5);
-        graphList.addEdge(5, 1);
+//        graphMatrix.addEdge('A', 'B');
+//        graphMatrix.addEdge('B', 'D');
+//        graphMatrix.addEdge('D', 'E');
+//        graphMatrix.addEdge('E', 'F');
+//        graphMatrix.addEdge('F', 'G');
+//        graphMatrix.addEdge('G', 'C');
+//        graphMatrix.addEdge('C', 'A');
+//        graphMatrix.addEdge('A', 'H');
 
-        graphMatrix.printMatrix();
+        graph.addEdge('H', 'A');
+        graph.addEdge('A', 'B');
+        graph.addEdge('A', 'C');
+        graph.addEdge('B', 'D');
+        graph.addEdge('D', 'E');
+        graph.addEdge('E', 'F');
+        graph.addEdge('F', 'G');
+        graph.addEdge('G', 'C');
+
+        System.out.println("DFS");
+        graph.dfs('A');
         System.out.println();
-        graphList.printGraph();
+        System.out.println("BFS");
+        graph.bfs('A');
     }
 }
