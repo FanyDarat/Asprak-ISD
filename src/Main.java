@@ -1,6 +1,7 @@
-import java.util.List;
+import java.util.*;
 
 public class Main {
+
     public static void main(String[] args) {
         Graph taskGraph = new Graph();
 
@@ -27,7 +28,7 @@ public class Main {
         if (taskOrder != null) {
             System.out.println("Urutan Pelaksanaan Tugas:");
             for (int i = 0; i < taskOrder.size(); i++) {
-                System.out.println((i+1) + ". " + taskOrder.get(i));
+                System.out.print(taskOrder.get(i) + ", ");
             }
         } else {
             System.out.println("Ada circular dependency dalam tugas-tugas.");
