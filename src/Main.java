@@ -1,37 +1,31 @@
 import java.util.*;
 
 public class Main {
-
     public static void main(String[] args) {
-        Graph taskGraph = new Graph();
+        BinaryTree<Character> tree = new BinaryTree<>();
+        tree.insert('A');
+        tree.insert('B');
+        tree.insert('C');
+        tree.insert('D');
+        tree.insert('E');
+        tree.insert('F');
+        tree.insert('G');
+        tree.insert('H');
+        tree.insert('I');
+        tree.insert('J');
+        tree.insert('K');
+        tree.insert('L');
 
-        // Add all tasks as vertices
-        taskGraph.addVertex("Hologram");
-        taskGraph.addVertex("Pengepasan kostum");
-        taskGraph.addVertex("Pencahayaan");
-        taskGraph.addVertex("Kostum");
-        taskGraph.addVertex("Pembuatan panggung");
-        taskGraph.addVertex("Properti panggung");
-        taskGraph.addVertex("Persiapan panggung");
-        taskGraph.addVertex("Kontak tim lain");
-
-        // Establish dependencies between tasks
-        taskGraph.addEdge("Kostum", "Pengepasan kostum");
-        taskGraph.addEdge("Pencahayaan", "Hologram");
-        taskGraph.addEdge("Pembuatan panggung", "Properti panggung");
-        taskGraph.addEdge("Pembuatan panggung", "Persiapan panggung");
-        taskGraph.addEdge("Properti panggung", "Hologram");
-        taskGraph.addEdge("Persiapan panggung", "Kontak tim lain");
-
-        List<String> taskOrder = taskGraph.topologicalSort();
-
-        if (taskOrder != null) {
-            System.out.println("Urutan Pelaksanaan Tugas:");
-            for (int i = 0; i < taskOrder.size(); i++) {
-                System.out.print(taskOrder.get(i) + ", ");
-            }
-        } else {
-            System.out.println("Ada circular dependency dalam tugas-tugas.");
-        }
+        System.out.println("Inorder Traversal:");
+        tree.inorder();
+        System.out.println("Post Order Traversal:");
+        tree.postOrder();
+        System.out.println("Pre Order Traversal:");
+        tree.preOrder();
+        System.out.println("Level Order Traversal:");
+        tree.levelOrder();
+        System.out.println("Total Nodes: " + tree.countNodes());
+        System.out.println("Apakah huruf A ada? : " + tree.search('A'));
+        System.out.println("Kedalaman Tree: " + tree.depth());
     }
 }
