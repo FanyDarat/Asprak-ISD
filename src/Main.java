@@ -1,31 +1,37 @@
+import java.util.*;
+
 public class Main {
+
     public static void main(String[] args) {
+        Graph taskGraph = new Graph();
 
-//        AdjacencyMatrix graphMatrix = new AdjacencyMatrix(8);
-        AdjacencyList graph = new AdjacencyList(8);
+        // Add all tasks as vertices
+        taskGraph.addVertex("Hologram");
+        taskGraph.addVertex("Pengepasan kostum");
+        taskGraph.addVertex("Pencahayaan");
+        taskGraph.addVertex("Kostum");
+        taskGraph.addVertex("Pembuatan panggung");
+        taskGraph.addVertex("Properti panggung");
+        taskGraph.addVertex("Persiapan panggung");
+        taskGraph.addVertex("Kontak tim lain");
 
-//        graphMatrix.addEdge('A', 'B');
-//        graphMatrix.addEdge('B', 'D');
-//        graphMatrix.addEdge('D', 'E');
-//        graphMatrix.addEdge('E', 'F');
-//        graphMatrix.addEdge('F', 'G');
-//        graphMatrix.addEdge('G', 'C');
-//        graphMatrix.addEdge('C', 'A');
-//        graphMatrix.addEdge('A', 'H');
+        // Establish dependencies between tasks
+        taskGraph.addEdge("Kostum", "Pengepasan kostum");
+        taskGraph.addEdge("Pencahayaan", "Hologram");
+        taskGraph.addEdge("Pembuatan panggung", "Properti panggung");
+        taskGraph.addEdge("Pembuatan panggung", "Persiapan panggung");
+        taskGraph.addEdge("Properti panggung", "Hologram");
+        taskGraph.addEdge("Persiapan panggung", "Kontak tim lain");
 
-        graph.addEdge('H', 'A');
-        graph.addEdge('A', 'B');
-        graph.addEdge('A', 'C');
-        graph.addEdge('B', 'D');
-        graph.addEdge('D', 'E');
-        graph.addEdge('E', 'F');
-        graph.addEdge('F', 'G');
-        graph.addEdge('G', 'C');
+        List<String> taskOrder = taskGraph.topologicalSort();
 
-        System.out.println("DFS");
-        graph.dfs('A');
-        System.out.println();
-        System.out.println("BFS");
-        graph.bfs('A');
+        if (taskOrder != null) {
+            System.out.println("Urutan Pelaksanaan Tugas:");
+            for (int i = 0; i < taskOrder.size(); i++) {
+                System.out.print(taskOrder.get(i) + ", ");
+            }
+        } else {
+            System.out.println("Ada circular dependency dalam tugas-tugas.");
+        }
     }
 }
